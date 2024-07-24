@@ -1,0 +1,116 @@
+
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Search Results - JurisJunction</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/search-results-styles.css' %}"/>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=places"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YM1GGXVM19"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YM1GGXVM19');
+</script>
+
+<body>
+  {% include 'navbar.html' %}
+  <main> 
+      <div class="title">
+        <h1 class="results">Search Results</h1>
+      </div>
+      {% include 'professional-search.html' %}
+      <div class="all-profiles">
+          {% for professional in professionals %}
+          <div class="col">
+            <a href="{% url 'professional_page' unique_id=professional.unique_id %}" style="text-decoration: none; color:black">
+              <div class="card profile-card shadow-lg"> 
+                  <div class="card-inside-items">
+                    <div class="top-items">
+                        <img class="pfp" src="{{professional.profile_picture.url}}"> 
+                      <div class="rating-container">
+                        {% if professional.average_rating %}
+                        <div class="pro-rating">
+                          <p>{{professional.average_rating}}</p>
+                          <i class="bi bi-star-fill"></i>
+                        </div>
+                          <small>
+                            {% if professional.num_of_reviews == 1 %}
+                            {{ professional.num_of_reviews }} Review
+                            {% else %}
+                            {{ professional.num_of_reviews }} reviews
+                            {% endif %}
+                          </small>
+                        {% else %}
+                          <p>No reviews yet.</p>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="name">
+                      <p> {{professional.first_name}} {{professional.last_name}}</p>
+                      <p class="desigination-text">{%for designation in professional.designations.all%} {{designation}}, {%endfor%}</p>
+                      <hr>
+                    </div>
+                        <div class="profile-text">
+                          <p>
+                            <b>Specialties:</b>
+                            {% for specialty in professional.specialties.all|slice:":2" %}
+                                {{ specialty.specialty }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                            {% if professional.specialties.count > 2 %}
+                                and {{ professional.specialties.count|add:"-2" }} more
+                            {% endif %}
+                          </p>
+                          <p>
+                            <b>Languages:</b>
+                            {% for language in professional.languages.all|slice:":2" %}
+                                {{ language.language }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                            {% if professional.languages.count > 2 %}
+                                and {{ professional.languages.count|add:"-2" }} more
+                            {% endif %}
+                          </p>
+                          <p> <b>Location:</b> {{professional.location}}</p>
+                    </div>
+                  </div>
+                  <div class="view-profile-button-container">
+                    <button class="view-profile-button" >View Profile</button>
+                  </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+      </div>
+
+  </main>
+  {% include 'footer.html' %}
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+
+</body>
+
+</html>

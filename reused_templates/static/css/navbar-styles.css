@@ -1,0 +1,92 @@
+body {
+    font-family: 'DM Sans', sans-serif;
+}
+
+html {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.navbar-nav .nav-link{
+    color: #fff;
+}
+
+.navbar {
+    background-color: #022140;
+}
+
+.nav-item a:hover {
+    color: #2d5f5d;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+  }
+.navbar-toggler{
+  border: 2px solid white !important;
+}
+.navbar-toggler:focus{
+  box-shadow: none;
+}
+
+.dropdown-menu {
+    --bs-dropdown-link-active-bg: #e9ecef;
+}
+
+.account-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    align-items: center;
+}
+
+.account-buttons p {
+    margin-bottom: 0;
+    margin-right: 12px;
+    color: white;
+}
+
+.account-buttons a {
+    display: inline-block;
+    color:#426d2e;
+}
+
+.portal-button {
+    border-radius: 20px;
+    background-color: #402102;
+    color: white;
+    border-style: none;
+    width:152px;
+}
+
+.portal-button p {
+    margin: 4px 8px 4px 8px;
+}
+
+.portal-button:hover {
+    transition: 0.2s;
+    background-color: #80471c;
+}
+
+.account-buttons a {
+    display: inline-block;
+}
+
+@media (max-width: 991px) {
+    .account-buttons {
+        margin-top: 4vh;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+    .account-buttons button {
+        margin-top: 4px;
+        width:324px;
+    }
+    .nav-item {
+        text-align: center;
+    }
+    .nav-item a:hover {
+        background-color: #022140;
+        color: aliceblue;
+    }
+}

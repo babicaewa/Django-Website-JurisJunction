@@ -1,0 +1,232 @@
+.total-blog-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding:8px;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.stats-title {
+    font-weight: 200;
+
+}
+
+.blog-stats-card {
+    padding:16px;
+    width: 200px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.create-blog-button-container {
+    margin-top: 18px;
+}
+
+.create-blog-button {
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 20px;
+    padding: 8px 12px 8px 12px;
+    background-color: #022140;
+    color: white;
+}
+
+.create-blog-button:hover {
+    background-color: #054381;
+    transition: 0.2s;
+}
+
+.edit-blog-button {
+    border-style: none;
+    border-radius: 20px;
+    padding: 8px 12px 8px 12px;
+    color: white;
+    background-color: #022140;
+    display: flex;
+    justify-content: center;
+    width: 142px;
+    margin-top: 12px;
+    text-decoration: none;
+}
+
+.blog-title {
+    margin-bottom: 0;
+}
+
+.blog-text {
+    font-size: 0.9rem;
+    font-weight: 200;
+}
+
+/*
+.blog-text-container {
+    background-image: linear-gradient(to top, transparent, black 50%);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+*/
+
+.blogs-created-container {
+    margin: 12px;
+}
+
+.edit-blog-button i {
+    margin-left: 12px;
+}
+
+.edit-blog-button:hover {
+    background-color: #054381;
+    transition: 0.2s;
+    color: white;
+}
+
+.delete-blog-button {
+    background-color: transparent;
+    color: red;
+}
+
+.delete-blog-button:hover {
+   background-color: rgb(255,255,255,0.9);
+   color: red;
+
+}
+
+.views-and-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card-value-and-icon {
+    display: flex;
+    font-size: 2rem;
+    font-weight: 200;
+    justify-content: center;
+}
+
+.card-value-and-icon i {
+    margin-left: 8px;
+}
+
+.blog-card-items-container {
+    margin: 48px;
+    display: flex;
+    height: 152px;
+    overflow: hidden;
+    flex-direction: column;
+    width: 100%;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+}
+
+.blog-card-hr {
+    margin-left: 0;
+    margin-right: 0;
+    width: auto;
+}
+
+.blog-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 24px;
+}
+
+.blog-card-options-container {
+    margin-left: auto;
+    margin-right: 24px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+}
+
+.overlay-delete-container {
+    position: fixed;
+    display: none;
+    z-index: 100;
+    height: 100vh;
+    width: 84%;
+    margin-left: 16%;
+    background-color: rgb(0,0,0,0.4);
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-close {
+    padding:12px;
+}
+
+.delete-form-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 24px;
+}
+
+.delete-form-text {
+    padding: 8px 24px 8px 24px
+}
+
+.delete-form-button {
+    width: 80%;
+    margin-bottom: 4px;
+    display: flex;
+}
+
+.delete-form-button i {
+    margin-left: 8px;
+}
+
+.yes-button {
+    background-color:#008321;
+}
+
+.yes-button:hover {
+    background-color: darkgreen;
+}
+
+.cancel-button {
+    background-color: #cf0000;
+}
+
+.cancel-button:hover {
+    background-color: darkred;
+}
+
+@media (max-width: 991px) {
+    .total-blog-cards-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .blog-stats-card {
+        margin-top: 12px;
+    }
+
+    .blog-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .blog-card-items-container {
+        height: 200px;
+        width: 80%;
+    }
+
+    .blog-card-options-container {
+        margin-left: 0;
+        margin-right: 0;
+        justify-content: center;
+    }
+
+    .edit-blog-button {
+        width: 242px;
+    }
+
+    .overlay-delete-container {
+        margin-left: 0;
+        width: 100%;
+    }
+}

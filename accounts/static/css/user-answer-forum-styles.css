@@ -1,0 +1,151 @@
+a, a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.page-header-text {
+    width: 80%;
+    text-align: center;
+}
+
+.forum-link {
+    text-decoration: underline;
+    color: blue;
+}
+
+.forum-link:hover {
+    text-decoration: underline;
+    color: #2d5f5d;
+}
+
+.questions-and-stats-container {
+    display: flex;
+}
+
+.questions-container {
+    padding:48px;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.question-card {
+    padding:12px;
+    width:400px;
+    height: 148px;
+    align-self: flex-start;
+    margin-bottom: 24px;
+    margin-right: 24px;
+}
+
+.question-icon-and-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bi-chat {
+    color: white;
+    background-color: #022140;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.question-title-text {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin:8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.question-content-text {
+    color: #7d7d7d;
+    font-weight: 200;
+    padding: 8px 8px 8px 48px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.side-stats-container {
+    margin-right: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-stats-title-container {
+    display: flex;
+    justify-content: center;
+}
+
+.side-stats-title-container i {
+    margin-left: 8px;
+}
+
+.stats-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.stats-card {
+    padding:12px;
+    width:212px;
+    margin-bottom: 12px;
+}
+
+.stats-card-title {
+    font-weight: bold;
+    text-align: center;
+}
+
+.stats-card-value {
+    font-weight: 200;
+    text-align: center;
+}
+
+.card-title-container {
+    display: flex;
+    justify-content: center;
+}
+
+.card-title-container i {
+    margin-left: 8px;
+}
+
+.none-message {
+    height:80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 991px) {
+
+    .page-header-text {
+        width: 100%;
+    }
+
+    .questions-and-stats-container {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .questions-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .side-stats-container {
+        margin-right: 0;
+        justify-content: center;
+    }
+}

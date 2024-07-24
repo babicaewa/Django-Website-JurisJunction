@@ -1,0 +1,139 @@
+a, a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.placeholder-cards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.placeholder-card {
+    width: 300px;
+    height: 134.2px;
+    border-radius: 4px;
+    margin-top: 12px;
+}
+
+.three-data-cards-container {
+    display: none;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.three-card {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding:12px;
+    background: rgb(2,33,64);
+    background: linear-gradient(37deg, rgba(2,33,64,1) 15%, rgba(4,55,106,1) 92%); 
+    color: white;
+    border-radius: 4px;
+    margin-top: 12px;
+}
+
+.three-card-big {
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+}
+
+.card-hr {
+    margin:8px;
+    color: white;
+}
+
+.three-card-small {
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-data-container {
+    display: flex;
+    font-size: 1.8rem;
+    align-items: center;
+}
+
+.bi-star-fill {
+    color: #ffc107;
+}
+
+.card-data-container i {
+    margin-left: 8px;
+}
+
+.three-card-title-container {
+    display: flex;
+    align-items: center;
+}
+
+.bi-info-circle {
+    margin-left: 8px;
+}
+
+.loading-spinners {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.spinner {
+    margin-left:4px;
+    color: #022140 !important;
+}
+
+.tab-items-and-spinners {
+    margin-top: 24px;
+}
+
+.nav-item button {
+    color: #022140 !important;
+}
+
+.tab-items {
+    display: none;
+}
+
+.tab-content {
+    padding:24px;
+}
+
+.total-visited-number {
+    font-size: 3rem;
+    margin-bottom: 0;
+}
+
+.total-visitors-text {
+    margin-left: 8px;
+}
+
+.visited-numbers {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.top5-title {
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin-top: 24px;
+}
+
+.top-5-graph {
+    height: 80% !important;
+    width: 80% !important;
+}
+
+@media (max-width: 991px) {
+
+    .tab-items-and-spinners {
+        align-items: center;
+    }
+}

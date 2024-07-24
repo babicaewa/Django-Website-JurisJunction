@@ -1,0 +1,193 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Analytics Portal - JurisJunction</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/user-analytics-styles.css' %}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YM1GGXVM19"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YM1GGXVM19');
+</script>
+
+<body>
+    
+  <main>
+
+    {% include 'portal-navbar.html'%}
+    <div class="main-content-container">
+      <h1 class="page-title">Analytics</h1>
+      <div class="three-data-cards-container">
+        <div class="card three-card">
+          <p class="three-card-big">Rating</p>
+          <hr class="card-hr">
+          <div class="card-data-container">
+            <p>{{current_professional.average_rating}}</p>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="three-card-small">{{num_of_reviews}} Reviews</p>
+        </div>
+        <div class="card three-card">
+          <p class="three-card-big">Avg Time Spent on Profile</p>
+          <hr class="card-hr">
+          <div class="card-data-container">
+            <p id="avgTimeSpent"></p>
+            <i class="bi bi-clock-history"></i>
+          </div>
+        </div>
+        <div class="card three-card">
+          <div class="three-card-title-container">
+            <p class="three-card-big">JurisScore</p>
+          <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="This score is determined by the contributions you make to the forum. 5+ is good, and 9+ is excellent."></i>
+          </div>
+
+          <hr class="card-hr">
+          <div class="card-data-container">
+            <p>8.7/10</p>
+            <i class="bi bi-award"></i>
+          </div>
+        </div>
+      </div>
+        <div class="tab-items-and-spinners">
+          <div class="placeholder-glow placeholder-cards-container">
+            <span class="placeholder col-2 placeholder-card"></span>
+            <span class="placeholder col-2 placeholder-card"></span>
+            <span class="placeholder col-2 placeholder-card"></span>
+          </div>
+      
+          <div class="loading-spinners" id="loadingSpinners">
+            <div class="spinner-grow text-primary spinner" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-primary spinner" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-primary spinner" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+          <div class="tab-items" id="analyticsData">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="year-tab" data-bs-toggle="tab" data-bs-target="#yearAgoChartArea" type="button" role="tab" aria-controls="yearAgoChartArea" aria-selected="true">Past Year</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="month-tab" data-bs-toggle="tab" data-bs-target="#monthAgoChartArea" type="button" role="tab" aria-controls="monthAgoChartArea" aria-selected="false">Past Month</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="week-tab" data-bs-toggle="tab" data-bs-target="#weekAgoChartArea" type="button" role="tab" aria-controls="weekAgoChartArea" aria-selected="false">Past Week</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="day-tab" data-bs-toggle="tab" data-bs-target="#dayAgoChartArea" type="button" role="tab" aria-controls="dayAgoChartArea" aria-selected="false">Past Day</button>
+            </li>
+          </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="yearAgoChartArea" role="tabpanel" aria-labelledby="year-tab">
+              <div class="total-visited-title">
+                <div class="visited-numbers">
+                  <h1 id="totalVistedYear" class="total-visited-number"></h1> 
+                    <p class="total-visitors-text">Total visitors</p>
+                </div>
+                <p id="totalVistedYearPast"></p>
+              </div>
+              <div class="top5-title">
+                <p>Top 5 Cities in the past 365 Days</p>
+              </div>
+                <canvas id='top5year' class="top-5-graph"></canvas>
+                <p class="no-data-message" style="display: none;" id="noDataYear">No data available</p>
+            </div>
+            <div class="tab-pane fade" id="monthAgoChartArea" role="tabpanel" aria-labelledby="month-tab">
+              <div class="total-visited-title">
+                <div class="visited-numbers">
+                  <h1 id="totalVistedMonth" class="total-visited-number"></h1> 
+                    <p class="total-visitors-text">Total visitors</p>
+                </div>
+                <p id="totalVistedMonthPast"></p>
+              </div>
+              <div class="top5-title">
+                <p>Top 5 Cities in the past 30 Days</p>
+              </div>
+                <canvas id='top5month' class="top-5-graph"></canvas>
+                <p class="no-data-message" style="display: none;" id="noDataMonth">No data available</p>
+            </div>
+            <div class="tab-pane fade" id="weekAgoChartArea" role="tabpanel" aria-labelledby="week-tab">
+              <div class="total-visited-title">
+                <div class="visited-numbers">
+                  <h1 id="totalVistedWeek" class="total-visited-number"></h1> 
+                    <p class="total-visitors-text">Total visitors</p>
+                </div>
+                <p id="totalVistedWeekPast"></p>
+              </div>
+              <div class="top5-title">
+                <p>Top 5 Cities in the past week</p>
+              </div>
+                <canvas id='top5week' class="top-5-graph"></canvas>
+                <p class="no-data-message" style="display: none;" id="noDataWeek">No data available</p>
+            </div>
+            <div class="tab-pane fade" id="dayAgoChartArea" role="tabpanel" aria-labelledby="day-tab">
+              <div class="total-visited-title">
+                <div class="visited-numbers">
+                  <h1 id="totalVistedDay" class="total-visited-number"></h1> 
+                    <p class="total-visitors-text">Total visitors</p>
+                </div>
+                <p id="totalVistedDayPast"></p>
+              </div>
+              <div class="top5-title">
+                <p>Top 5 Cities in the past Day</p>
+              </div>
+                <canvas id='top5day' class="top-5-graph"></canvas>
+                <p class="no-data-message" style="display: none;" id="noDataDay">No data available</p>
+            </div>
+          </div>
+        </div>
+      </div>   
+    </div>
+
+      
+      
+     
+
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="{% static 'js/analytics.js' %}"></script>
+  <script>
+      const userPageUrl = '{{ url }}';
+      const apiUrl = '/api/analytics_calls/';  // Adjust this to match your Django API endpoint
+      window.onload= function() {
+        fetchData(userPageUrl, apiUrl);
+      };
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+
+</html>

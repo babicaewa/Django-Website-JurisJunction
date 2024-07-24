@@ -1,0 +1,24 @@
+{% load static %}
+ 
+ <link rel="stylesheet" type="text/css" href="{% static 'css/footer-styles.css' %}"/>
+
+
+<div class="container footer-items">
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item-footer"><a href="{% url 'index' %}" class="nav-link px-2 text-body-secondary">Search</a></li>
+        <li class="nav-item-footer"><a href="{% url 'forum_home' %}" class="nav-link px-2 text-body-secondary">Forum</a></li>
+        <li class="nav-item-footer"><a href="{% url 'blog_index' %}" class="nav-link px-2 text-body-secondary">Blogs</a></li>
+        <li class="nav-item-footer"><a href="{% url 'features' %}" class="nav-link px-2 text-body-secondary">Features</a></li>
+        <li class="nav-item-footer"><a href="{% url 'pricing' %}" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+        <li class="nav-item-footer"><a href="{% url 'faq' %}" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+        <li class="nav-item-footer"><a href="{% url 'about_us' %}" class="nav-link px-2 text-body-secondary">About Us</a></li>
+        <li class="nav-item-footer"><a href="{% url 'support_feedback' %}" class="nav-link px-2 text-body-secondary">Support & Feedback</a></li>
+      </ul>
+      <p class="text-center text-body-secondary">&copy; 
+        <span id="copyright">
+            <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+        </span>
+        JurisJunction, Inc</p>
+    </footer>
+  </div>

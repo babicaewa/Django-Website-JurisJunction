@@ -1,0 +1,345 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Search - JurisJunction</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index-styles.css' %}">
+
+  <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=places"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YM1GGXVM19"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YM1GGXVM19');
+</script>
+
+<style>
+
+</style>
+
+<body>
+  {% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible fade show fixed-top" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+  
+  {% include 'navbar.html' %}
+  
+<div class="img-styling-container">
+  <img class='svg-wave' src="{{ MEDIA_URL }}main/wave(5).png" alt="wave">
+  <img class="bg-image" src="{{ MEDIA_URL }}main/index-photo-1.jpg" alt="bg image">
+</div>
+
+
+<div class="page-content">
+  <div class="header-text">
+    <h1>Find a Reliable Accountant in seconds, hassle-free.</h1>
+    <h3><a href="{% url 'forum_home' %}" style="color: white">Or ask one for advice.</a></h3>
+  </div>
+
+  {% include 'professional-search.html' %}
+    
+  <div class="other-page-content">
+    <div class="section">
+      <div class="section-title">
+        <h3>Chosing an accountant isn't a decision, it's a <u style="color:#402102">life-time investment.</u></h3>
+      </div>
+      <div class="section-main-content">
+        <p class="section-main-text">
+          With so little information on the web, and confusing online referral programs,
+          finding an accontant is more diffcult than it has to be.
+        </p>
+        <div class="cards-container">
+          <p class="card-title">
+            We've simplified the process:
+          </p>
+          <div class="row">
+            <div class="col">
+              <div class="card shadow desc-card">
+                <p class="card-title">
+                  Easy-to-Use Directory
+                </p>
+                <p class="card-content">
+                  With simple searches, to detailed ones with numerous filters,
+                  finding an accountant to suit your needs is only a few clicks away.
+                </p>
+                <div class="card-img-container">
+                  <img src="{{ MEDIA_URL }}main/puzzle.png" alt="community-photo" height="50px" width="50px">
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow desc-card">
+                <p class="card-title">
+                  Rigorous Screening
+                </p>
+                <p class="card-content">
+                  We research every accountant before allowing them to 
+                  join JurisJunction, to ensure they are legitimate.
+                </p>
+                <div class="card-img-container">
+                  <img src="{{ MEDIA_URL }}main/interview.png" alt="community-photo" height="50px" width="50px">
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow desc-card">
+                <p class="card-title">
+                  Community Driven
+                </p>
+                <p class="card-content">
+                  Users leave reviews on profiles that they connected with,
+                  allowing for true and accurate ratings of accountants.
+                </p>
+                <div class="card-img-container">
+                  <img src="{{ MEDIA_URL }}main/community.png" alt="community-photo" height="50px" width="50px">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section accountant-section">
+      <div class="section-title">
+        <h3>Are you an Accountant? See how JurisJunction can help you <a href="{% url 'features' %}">here!</a></h3>
+      </div>
+      <div class="section-main-content">
+        <p class="section-main-text">
+          Whether you're looking to grow your brand, or just want extra leads,
+          we can help! We offer a 30-day free trial! No strings attached.
+        </p>
+      </div>
+    </div>
+    <div class="section">
+      <div class="card section-card">
+        <img src="{{ MEDIA_URL }}main/index-photo-2.jpg" alt="Blog Photo">
+        <div class="section-card-text">
+          <p class="section-main-p">Get your accounting questions answered by certified accountants.</p>
+            <a href="{% url 'forum_home' %}" class="search-button section-card-button">
+              <p>Visit Forum</p>
+            </a>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="card section-card section-card-reverse">
+        <div class="section-card-text">
+          <p class="section-main-p">Learn more about accounting related topics.</p>
+            <a href="{% url 'blog_index' %}" class="search-button section-card-button">
+              <p>Check out Blogs</p>
+            </a>
+        </div>
+        <img src="{{ MEDIA_URL }}main/index-photo-3.jpg" alt="Blog Photo">
+      </div>
+    </div>
+      <div class="section testimonal-section">
+        <div class="section-title test-title">
+          <h3>Check what our users have said about JurisJunction!</h3>
+        </div>
+        <div class="card-carasel-container">
+          <div class="carasel">
+            <div class="card shadow testimonial-card">
+              <p class="testimonial">
+                "Thanks to JurisJunction I was able to find 
+                an accountant for my business needs, and I 
+                couldn't be happier! Not only was the website
+                easy to use, but it also helped me match with
+                the perfect accoutant! I highly recomend people
+                to use JurisJunction!"
+              </p>
+              <div class="testimonial-person-info-container">
+                <div class="testimonial-person-info">
+                  <img src="{{ MEDIA_URL }}main/default-pfp.jpg" alt="testimonal-pic">
+                  <p>Anonymous User</p>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow testimonial-card">
+              <p class="testimonial">
+                "Thanks to JurisJunction I was able to find 
+                an accountant for my business needs, and I 
+                couldn't be happier! Not only was the website
+                easy to use, but it also helped me match with
+                the perfect accoutant! I highly recomend people
+                to use JurisJunction!"
+              </p>
+              <div class="testimonial-person-info-container">
+                <div class="testimonial-person-info">
+                  <img src="{{ MEDIA_URL }}main/default-pfp.jpg" alt="testimonal-pic">
+                  <p>Anonymous User</p>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow testimonial-card">
+              <p class="testimonial">
+                "Thanks to JurisJunction I was able to find 
+                an accountant for my business needs, and I 
+                couldn't be happier! Not only was the website
+                easy to use, but it also helped me match with
+                the perfect accoutant! I highly recomend people
+                to use JurisJunction!"
+              </p>
+              <div class="testimonial-person-info-container">
+                <div class="testimonial-person-info">
+                  <img src="{{ MEDIA_URL }}main/default-pfp.jpg" alt="testimonal-pic">
+                  <p>Anonymous User</p>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow testimonial-card">
+              <p class="testimonial">
+                "Thanks to JurisJunction I was able to find 
+                an accountant for my business needs, and I 
+                couldn't be happier! Not only was the website
+                easy to use, but it also helped me match with
+                the perfect accoutant! I highly recomend people
+                to use JurisJunction!"
+              </p>
+              <div class="testimonial-person-info-container">
+                <div class="testimonial-person-info">
+                  <img src="{{ MEDIA_URL }}main/default-pfp.jpg" alt="testimonal-pic">
+                  <p>Anonymous User</p>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow testimonial-card">
+              <p class="testimonial">
+                "Thanks to JurisJunction I was able to find 
+                an accountant for my business needs, and I 
+                couldn't be happier! Not only was the website
+                easy to use, but it also helped me match with
+                the perfect accoutant! I highly recomend people
+                to use JurisJunction!" 
+              </p>
+              <div class="testimonial-person-info-container">
+                <div class="testimonial-person-info">
+                  <img src="{{ MEDIA_URL }}main/default-pfp.jpg" alt="testimonal-pic">
+                  <p>Anonymous User</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carasel">
+            <div class="card shadow testimonial-card">
+              <p class="testimonial">
+                "Thanks to JurisJunction I was able to find 
+                an accountant for my business needs, and I 
+                couldn't be happier! Not only was the website
+                easy to use, but it also helped me match with
+                the perfect accoutant! I highly recomend people
+                to use JurisJunction!"
+              </p>
+              <div class="testimonial-person-info-container">
+                <div class="testimonial-person-info">
+                  <img src="{{ MEDIA_URL }}main/default-pfp.jpg" alt="testimonal-pic">
+                  <p>Anonymous User</p>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow testimonial-card">
+              <p class="testimonial">
+                "Thanks to JurisJunction I was able to find 
+                an accountant for my business needs, and I 
+                couldn't be happier! Not only was the website
+                easy to use, but it also helped me match with
+                the perfect accoutant! I highly recomend people
+                to use JurisJunction!"
+              </p>
+              <div class="testimonial-person-info-container">
+                <div class="testimonial-person-info">
+                  <img src="{{ MEDIA_URL }}main/default-pfp.jpg" alt="testimonal-pic">
+                  <p>Anonymous User</p>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow testimonial-card">
+              <p class="testimonial">
+                "Thanks to JurisJunction I was able to find 
+                an accountant for my business needs, and I 
+                couldn't be happier! Not only was the website
+                easy to use, but it also helped me match with
+                the perfect accoutant! I highly recomend people
+                to use JurisJunction!"
+              </p>
+              <div class="testimonial-person-info-container">
+                <div class="testimonial-person-info">
+                  <img src="{{ MEDIA_URL }}main/default-pfp.jpg" alt="testimonal-pic">
+                  <p>Anonymous User</p>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow testimonial-card">
+              <p class="testimonial">
+                "Thanks to JurisJunction I was able to find 
+                an accountant for my business needs, and I 
+                couldn't be happier! Not only was the website
+                easy to use, but it also helped me match with
+                the perfect accoutant! I highly recomend people
+                to use JurisJunction!"
+              </p>
+              <div class="testimonial-person-info-container">
+                <div class="testimonial-person-info">
+                  <img src="{{ MEDIA_URL }}main/default-pfp.jpg" alt="testimonal-pic">
+                  <p>Anonymous User</p>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow testimonial-card">
+              <p class="testimonial">
+                "Thanks to JurisJunction I was able to find 
+                an accountant for my business needs, and I 
+                couldn't be happier! Not only was the website
+                easy to use, but it also helped me match with
+                the perfect accoutant! I highly recomend people
+                to use JurisJunction!" 
+              </p>
+              <div class="testimonial-person-info-container">
+                <div class="testimonial-person-info">
+                  <img src="{{ MEDIA_URL }}main/default-pfp.jpg" alt="testimonal-pic">
+                  <p>Anonymous User</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  
+</div>
+
+{% include 'footer.html' %}
+
+</div>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+
+
+</body>
+
+</html>

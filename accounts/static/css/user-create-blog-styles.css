@@ -1,0 +1,153 @@
+a, a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.go-back-link {
+    display: flex;
+    flex-direction: row;
+    padding: 12px;
+    color: #022140;
+}
+
+.go-back-link:hover {
+    color: #054381;
+}
+
+.go-back-link p {
+    margin-left: 8px;
+}
+
+.page-content {
+    margin-left: 24vw;
+    width:76vw;
+    height: 100vh;
+}
+
+.blog-form {
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.ql-editor {
+    background-color: white;
+    height: 200px;
+}
+
+.dropdown-toggle {
+    background-color: transparent;
+    border-style: none;
+    color: black;
+}
+
+.add-button-container {
+    display: flex;
+}
+
+.tag-added {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-color: #022140;
+    background-color: #022140;
+    width:auto;
+    padding:8px;
+    border-radius: 20px;
+    height: 2rem;
+    margin-top: 10px;
+    margin-right: 8px;
+    cursor: pointer;
+    color: white;
+}
+
+.tag-added p {
+    margin-bottom: 0;
+}
+
+.tag-added:hover {
+    background-color: transparent;
+    text-decoration: line-through;
+    color: black;
+}
+
+.add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:12px 8px 12px 8px;
+    border-radius: 20px;
+    border-style: none;
+    width:auto;
+    background-color: #022140;
+    color: white;
+    height: 2rem;
+    margin-top: 10px;
+}
+
+.add-button-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-button-text p {
+    margin-bottom: 0px;
+    margin-right:8px;
+}
+
+.select-list {
+    list-style-type: none;
+    padding-left:0px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    height: 11rem;
+    overflow: scroll;
+    position: absolute;
+    width:240px;
+    background-color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.input-list {
+    display: none;
+    width:240px;
+}
+
+.topic {
+    padding: 4px;
+}
+
+.select-list li:hover {
+    background-color: #022140;
+    color: white;
+}
+
+@media (max-width: 991px) {
+    .side-navbar {
+        display: none;
+    }
+
+    .mobile-nav-open {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    .side-navbar {
+        width:250px;
+    }
+
+    .page-content {
+        margin-left: 0;
+        width: 100vw;
+    }
+
+    .blog-form {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+

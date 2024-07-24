@@ -1,0 +1,103 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Blog Search Results - JurisJunction</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blog-search-results-styles.css' %}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YM1GGXVM19"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YM1GGXVM19');
+</script>
+
+<body>
+  {% include 'navbar.html' %}
+
+  <div class="page-content">
+    <div class="blog-search">
+        <form id="searchForm" action="{% url 'blog_search_results' %}" class="search-form">
+            <div class="input-group mb-3 search-input">
+                <input type="text" class="form-control" placeholder="Search blogs..." name="keyword_search" aria-label="search" aria-describedby="basic-addon1">
+                  <button type="submit" class="submit-button">
+                        <div class="input-group-append">
+                            <i class="bi bi-search"></i>
+                          </div>
+                    </span>
+                  </button>
+            </div>
+          </form>
+    </div>
+    <div class="page-title">
+        <h1><b>Search Results for '{{ keyword }}'</b></h1>
+    </div>
+        <div class="blog-cards-container">
+            {% for blog in blogs_found %}
+            <a href="{% url 'blog_post' blog_title=blog.blog_title  pk=blog.id %}" style="text-decoration: none; color:black">
+                <div class="card shadow blog-card">
+                    <img src="{{ blog.photo_path.url }}" alt="blog Photo">
+                    <div class="blog-text-items">
+                        <h4 class="blog-title"><b>{{blog.blog_title}}</b></h4>
+                        <div class="info-items">
+                            <div class="author-info">
+                                <img src="{{ blog.author.professional.profile_picture.url }}" alt="author pfp">
+                                <div class="author-info-text">
+                                    <small><b>{{ blog.author.professional.first_name }} {{ blog.author.professional.last_name }}</b></small>
+                                    <small>{{ blog.created_at }}</small>
+                                </div>
+                            </div>
+                            <div class="topic-and-time">
+                                <div class="blog-topic">
+                                    <small>{{ blog.topic }}</small>
+                                </div>
+                                <small class="min-read">• {{ blog.blog_len }} minute read</small>
+                            </div>
+                            <div class="blog-views">
+                                {% if blog.blog_views == 1 %}
+                                <small>{{ blog.blog_views }} View |</small>
+                            {% else %}
+                                <small>{{ blog.blog_views }} Views |</small>
+                            {% endif %}
+                            {% if blog.blog_likes == 1 %}
+                                <small>|  {{ blog.blog_likes }} Like</small>
+                            {% else %}
+                                <small>|  {{ blog.blog_likes }} Likes</small>
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </a>
+        </div>
+  </div>
+
+  {% include 'footer.html' %}
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

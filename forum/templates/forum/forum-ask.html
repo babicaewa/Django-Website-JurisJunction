@@ -1,0 +1,160 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Ask A Question - JurisJunction</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forum-ask-styles.css' %}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YM1GGXVM19"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YM1GGXVM19');
+</script>
+
+<body>
+  {% include 'navbar.html' %}
+
+      <div class="header-and-back-button">
+          <div class="header-box">
+            <div class="header-text-and-breadcrumbs">
+                <nav class="breadcrumb-nav" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='white'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="{% url 'forum_home' %}">Forum Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Ask a Question</li>
+                    </ol>
+                  </nav>
+                <h1>JurisJunction Forum</h1>
+                <h5>Expert advise from certified accountants.</h5>
+            </div>
+          </div>
+      </div>
+      <div class="page-content">
+        <div class="content-title">
+            <h2>Get Your Question Answered.</h2>
+            <p>By JurisJunction Vetted Accountants!</p>
+        </div>
+        <div class="ask-form-container" id="askFormContainer">
+            <form class="ask-form" id="askForm" method="POST">
+                {% csrf_token %}
+                <div class="mb-5">
+                    <label for="emailInput" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="example@email.com" required>
+                    <div class="emailHelp"><small><i>This is only so we can notify you when your question gets answered. We would never share your email without permission.</i></small></div>
+                </div>
+                <div class="mb-5">
+                    <label for="questionTitleInput" class="form-label">Question Title</label>
+                    <input type="questionTitle" class="form-control" id="questionTitleInput" aria-describedby="titleHelp" required>
+                </div>
+                <div class="mb-5">
+                    <label for="questionTextInput" class="form-label">Question Text</label>
+                    <textarea type="questionText" class="form-control question-text" id="questionTextInput" aria-describedby="titleHelp" required></textarea>
+                </div>
+
+                <div class="mb-5">
+                    <div class="topic-title">
+                        <h5>Topics:</h5>
+                    </div>
+                        <div class="add-topic-container" id="topicsContainer">
+                            <div class="topic-button-and-dropdown" id="topicButtonAndDropdown">
+                            <button class="add-topic-button" type="button" id="topicButton">
+                                <div class="topic-button-text">
+                                    <p>Add Topic Tags</p>
+                                    <i class="bi bi-plus-circle-fill"></i> 
+                                </div> 
+                            </button>
+                            <div class="topics-selects-container" id="topicsSelectsContainer">
+                                <div class="topic-search">
+                                    <div class="card topic-search-card">
+                                    <input class="topic-check-input" type="text" value="{{ topic.specialty }}" id="topicInput">
+                                    <ul class="topic-list" id="topicList">
+                                        {% for topic in topics %}
+                                        <li class="topic" value="{{ topic.specialty }}" id="topic">{{ topic.specialty }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                  </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                    <small>To delete tags, just click on the ones you don't want.</small>
+                </div>
+                <div class="mb-5">
+                    <div class="province-title">
+                        <h5>Province:</h5>
+                    </div>
+                    <div class="province-select-and-button" id="provinceSelectAndButton">
+                        <button class="add-province-button" type="button" id="provinceButton">
+                            <div class="province-button-text" id="provinceButtonText">
+                                <p>Select Province</p>
+                                <i class="bi bi-plus-circle-fill"></i> 
+                            </div> 
+                        </button>
+                    </div>
+                    <div class="province-search" id="provinceSearch">
+                        <div class="card province-search-card" id="provinceSearchCard">
+                            <input class="province-check-input" type="text" value="{{ province.province }}" id="provinceInput">
+                            <ul class="province-list" id="provinceList">
+                                {% for province in provinces %}
+                                <li class="province" value="{{ province.province }}" id="province">{{ province.province }}</li>
+                                {% endfor %}
+                            </ul>
+                          </div>
+                    </div>
+                    <small>To change the province, either click on your previous selection, or select a new one.</small>
+                </div>
+
+                <div class="mb-5">
+                    <div class="agree-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                        <label class="form-check-label" for="flexCheckDefault">
+                          <small>By submitting this question, you agree to have it publicly shared for 
+                            JurisJunction accountants to answer, as well as agreeing to us emailing you when someone responds.</small>
+                        </label>
+                      </div>
+                </div>
+                <div class="mb-5 submit-button-container">
+                    <button type="submit" class="submit-button" id="submitButton">Submit</button>
+                </div>
+            
+            </form>
+
+      </div>
+      
+
+    {% include 'footer.html' %}
+  <!-- Bootstrap JavaScript Libraries -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{% static 'js/forumAsk.js' %}"></script>
+
+  </div>
+</body>
+
+</html>

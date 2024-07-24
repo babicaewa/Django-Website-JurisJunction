@@ -1,0 +1,169 @@
+{% load static %}
+
+<head>
+    <link rel="icon" type="image/png" href="/media/main/favicon.png">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+ <link rel="stylesheet" type="text/css" href="{% static 'css/portal-navbar-styles.css' %}"/>
+
+ <nav class="navbar-container-computer shadow-sm">
+    <div class="portal-title-box-container shadow-sm">
+        <div class="logo-title">
+            <h5>JurisJunction</h5>
+            <p>Portal</p>
+        </div>
+        <div class="user-pfp-and-name">
+            <p class="username-text">{{user.professional.first_name}} {{user.professional.last_name}}</p>
+            <img class="pfp" src="{{user.professional.profile_picture.url}}"> 
+        </div>
+    </div>
+    <div class="side-navbar-list-container">
+        <ul class="navbar-items-container">
+            <div class="section-content-container">
+                <div class="section-title">
+                    <p>Data</p>
+                </div>
+                <a class="navbar-link" href="{% url 'user_overview' %}">
+                    <li class="nav-item">
+                        <i class="bi bi-house-door-fill"></i>
+                        <p class="nav-item-text">Dashboard</p>
+                    </li>
+                </a>
+                <a class="navbar-link" href="{% url 'user_analytics' %}">
+                    <li class="nav-item">
+                        <i class="bi bi-clipboard-data-fill"></i>
+                        <p class="nav-item-text">Analytics</p>
+                    </li>
+                </a>
+                <hr>
+            </div>
+            <div class="section-content-container">
+                <div class="section-title">
+                    <p>Interact</p>
+                </div>
+                <a class="navbar-link" href="{% url 'user_answer_forums' %}">
+                    <li class="nav-item">
+                        <i class="bi bi-chat-fill"></i>
+                        <p class="nav-item-text">Forum</p>
+                    </li>
+                </a>
+                <a class="navbar-link" href="{% url 'user_blog_index' %}">
+                    <li class="nav-item">
+                        <i class="bi bi-eye-fill"></i>
+                        <p class="nav-item-text">Blog</p>
+                    </li>
+                </a>
+                <hr>
+            </div>
+            <div class="section-content-container">
+                <div class="section-title">
+                    <p>Customize</p>
+                </div>
+                <a class="navbar-link" href="{% url 'user_edit_profile' %}">
+                    <li class="nav-item">
+                        <i class="bi bi-pencil-fill"></i>
+                        <p class="nav-item-text">Edit Profile</p>
+                    </li>
+                </a>
+                <a class="navbar-link" href="{% url 'user_settings' %}">
+                    <li class="nav-item">
+                        <i class="bi bi-gear-fill"></i>
+                        <p class="nav-item-text">Settings</p>
+                    </li>
+                </a>
+                <hr>
+            </div>
+            <a class="logout-bullet" href="{% url 'user_logout' %}">
+                <li class="nav-item">
+                    <i class="bi bi-box-arrow-in-left"></i>
+                    <p class="nav-item-text">Log Out</p>
+                </li>
+            </a>
+        </ul>
+    </div>
+ </nav>
+
+ <div class="portal-title-box-container mobile-title-box-container shadow-sm">
+    <div class="portal-mobile-content-container">
+        <i class="bi bi-list sidebar-toggle"></i>
+        <div class="mobile-logo">
+            <h5 class="logo-text">JurisJunction</h5>
+            <p class="logo-text">Portal</p>
+        </div>
+        <img class="pfp" src="{{user.professional.profile_picture.url}}"> 
+    </div>
+    <div class="overlay">
+        <div class="side-navbar-mobile-list-container">
+            <ul class="navbar-items-container">
+                <div class="section-content-container">
+                    <div class="section-title">
+                        <p>Data</p>
+                    </div>
+                    <a class="navbar-link" href="{% url 'user_overview' %}">
+                        <li class="nav-item nav-item-mobile">
+                            <i class="bi bi-house-door-fill"></i>
+                            <p class="nav-item-text">Dashboard</p>
+                        </li>
+                    </a>
+                    <a class="navbar-link" href="{% url 'user_analytics' %}">
+                        <li class="nav-item nav-item-mobile">
+                            <i class="bi bi-clipboard-data-fill"></i>
+                            <p class="nav-item-text">Analytics</p>
+                        </li>
+                    </a>
+                    <hr>
+                </div>
+                <div class="section-content-container">
+                    <div class="section-title">
+                        <p>Interact</p>
+                    </div>
+                    <a class="navbar-link" href="{% url 'user_answer_forums' %}">
+                        <li class="nav-item nav-item-mobile">
+                            <i class="bi bi-chat-fill"></i>
+                            <p class="nav-item-text">Forum</p>
+                        </li>
+                    </a>
+                    <a class="navbar-link" href="{% url 'user_blog_index' %}">
+                        <li class="nav-item nav-item-mobile">
+                            <i class="bi bi-eye-fill"></i>
+                            <p class="nav-item-text">Blog</p>
+                        </li>
+                    </a>
+                    <hr>
+                </div>
+                <div class="section-content-container">
+                    <div class="section-title">
+                        <p>Customize</p>
+                    </div>
+                    <a class="navbar-link" href="{% url 'user_edit_profile' %}">
+                        <li class="nav-item nav-item-mobile">
+                            <i class="bi bi-pencil-fill"></i>
+                            <p class="nav-item-text">Edit Profile</p>
+                        </li>
+                    </a>
+                    <a class="navbar-link" href="{% url 'user_settings' %}">
+                        <li class="nav-item nav-item-mobile">
+                            <i class="bi bi-gear-fill"></i>
+                            <p class="nav-item-text">Settings</p>
+                        </li>
+                    </a>
+                    <hr>
+                </div>
+                <a class="logout-bullet" href="{% url 'user_logout' %}">
+                    <li class="nav-item nav-item-mobile">
+                        <i class="bi bi-box-arrow-in-left"></i>
+                        <p class="nav-item-text">Log Out</p>
+                    </li>
+                </a>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="{% static 'js/portalNavbar.js' %}"></script>

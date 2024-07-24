@@ -1,0 +1,147 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Edit Blog Post - JurisJunction</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <!-- Include stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0/dist/quill.snow.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/user-create-blog-styles.css' %}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YM1GGXVM19"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YM1GGXVM19');
+</script>
+
+<body>
+  <main>
+
+    {% include 'portal-navbar.html'%}
+    <div class="main-content-container">
+      {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-dismissible fade show alerts-container sticky-top" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+      <div class="go-back">
+        <a href="{% url 'user_blog_index'%}" class="go-back-link">
+            <i class="bi bi-arrow-left-circle"></i>
+            <p>Blog Home</p>
+        </a>
+      </div>
+      <div class="page-title">
+        <h1>Edit Your Blog Post</h1>
+       </div>
+       <div class="blog-form">
+           <form action="POST" id="blogForm">
+               {% csrf_token %}
+               <input id="blogId" type="text" value="{{blog_post.id}}" style="display:none">
+               <div class="mb-5">
+                   <label for="blogTitle" class="form-label">Blog Title</label>
+                   <input type="text" class="form-control" id="blogTitle" value="{{blog_post.blog_title}}">
+               </div>
+               <div class="mb-5">
+                   <label for="answerCardText" class="form-label">Blog Text</label>
+                   <div id="editor">
+                    {{blog_post.blog_text|safe}}
+                  </div>
+               </div>
+               <div class="mb-5">
+                   <div class="button-and-selection">
+                       <div class="add-button-container" id="topicButtonContainer">
+                            <div id="topicAdded" class="tag-added">
+                                <p>{{blog_post.topic}}</p>
+                            </div>
+                           <button class="add-button" type="button" id="topicButton">
+                               <div class="add-button-text">
+                                   <p>Change Topic</p>
+                                   <i class="bi bi-plus-circle-fill"></i> 
+                               </div> 
+                           </button>
+                       </div>
+                       <div class="input-list" id="inputTopicList">
+                           <input class="province-check-input" type="text" id="topicInput">
+                           <div class="card">
+                               <ul class="select-list" id="topicList">
+                                   {% for topic in topics %}
+                                   <li class="topic" value="{{ topic.specialty }}" id="topic">{{ topic.specialty }}</li>
+                                   {% endfor %}
+                               </ul>
+                           </div>
+                       </div>
+                   </div>
+                   <small><i>*Tags help people find your blog.</i></small>
+               </div>
+               <div class="mb-5">
+                   <div class="button-and-selection">
+                       <div class="add-button-container">
+                            <div id="provinceAdded" class="tag-added">
+                                <p>{{blog_post.location}}</p>
+                            </div>
+                           <button class="add-button" type="button" id="provinceButton">
+                               <div class="add-button-text">
+                                   <p>Change Province</p>
+                                   <i class="bi bi-plus-circle-fill"></i> 
+                               </div> 
+                           </button>
+                       </div>
+                       <div class="input-list" id="inputProvinceList">
+                           <input class="province-check-input" type="text" id="provinceInput">
+                           <div class="card">
+                               <ul class="select-list" id="provinceList">
+                                   {% for province in provinces %}
+                                   <li class="topic" value="{{ province.province }}" id="topic">{{ province.province }}</li>
+                                   {% endfor %}
+                               </ul>
+                           </div>
+                       </div>
+                   </div>
+                   <small><i>*Tags help people find your blog.</i></small>
+               </div>
+               <div class="mb-5">
+                   <button type="submit" class="btn btn-primary">Post Changes</button>
+               </div>
+           </form>
+       </div>
+    </div>
+    
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="{% static 'js/editBlog.js' %}"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0/dist/quill.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Dashboard Portal - JurisJunction</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/user-overview-styles.css' %}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YM1GGXVM19"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YM1GGXVM19');
+</script>
+
+<div class="profile-week-data" id="profileWeekData" style="display:none">{{week_profile_visits_data_cleaned}}</div>
+
+<body>
+  {% include 'portal-navbar.html'%}
+  <div class="main-content-container">
+  {% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible fade show alerts-container" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+  <main>
+      <div class="opacity-filter" id="opacityFilter">
+      <div class="page-content" id="pageContent">
+        <div class="title-and-sub">
+          <div class="page-title">
+            <h1>Welcome, {{user.professional.first_name}}.</h1>
+            <h4>Your Portal Overview</h4>
+          </div>
+        </div>
+        <div class="section-container mb-3">
+          <div class="section-title">
+            <a href="{% url 'user_analytics' %}">
+              <h5>Profile Analytics</h5> 
+              <i class="bi bi-chevron-right"></i>
+              </a>
+          </div>
+          <div class="all-profile-analytics-cards">
+            <div class="card shadow profile-analytics-graph-card">
+              <p class="card-text">Your weekly visitors in the past month:</p>
+              <div class="weekly-chart-container">
+                <canvas id="weeklyChart"></canvas>
+              </div>
+            </div>
+            <div class="all-side-profile-analytics-cards">
+              <div class="card shadow side-profile-analytics-card">
+                <div class="side-card-title">
+                  <h5>Total Emails Inquiries</h5>
+                  <div class="icon-container">
+                    <i class="bi bi-envelope"></i>
+                  </div>
+                </div>
+                <p class="email-number">12</p>
+              </div>
+              <div class="card shadow side-profile-analytics-card">
+                <div class="side-card-title">
+                  <h5>Average Profile Rating</h5>
+                </div>
+                <div class="rating-values">
+                  <p class="rating-number">{{user.professional.average_rating}}</p>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-container mb-3">
+          <div class="forum-and-blog-container">
+            <div class="forum-container">
+              <div class="section-title">
+                <a href="{% url 'user_answer_forums' %}">
+                  <h5>Forum Q&A</h5> 
+                  <i class="bi bi-chevron-right"></i>
+                  </a>
+              </div>
+                {% if random_question_related %}
+                <a class="nav-link-forum" href="{% url 'forum_question' pk=random_question_related.id%}">
+                  <div class="card question-card">
+                    <div class="question-icon-and-title">
+                      <div class="icon-container">
+                        <i class="bi bi-chat"></i>
+                      </div>
+                      <p class="question-title-text">{{random_question_related.forum_question_title}}</p>
+                    </div>
+                    <p class="question-content-text">{{random_question_related.forum_question}}</p>
+                  </div>
+                </a>
+                {%endif%}
+            </div>
+              <div class="blog-info-container">
+                <div class="section-title">
+                  <a href="{% url 'user_blog_index' %}">
+                    <h5>Blog Analytics</h5> 
+                    <i class="bi bi-chevron-right"></i>
+                    </a>
+                </div>
+                    <div class="card shadow side-profile-analytics-card blog-card">
+                      <div class="side-card-title">
+                        <h5>Total Blog Views</h5>
+                        <div class="icon-container blog-icon-container">
+                          <i class="bi bi-chat-left-text"></i>
+                        </div>
+                      </div>
+                      <p class="email-number">12</p>
+                    </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="{% static 'js/overview.js' %}"></script>
+  <script> var chartData = "{{ week_profile_visits_data }}"</script>
+</body>
+
+</html>

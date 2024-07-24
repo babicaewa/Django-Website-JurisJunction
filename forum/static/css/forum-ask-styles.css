@@ -1,0 +1,253 @@
+.bg {
+    background-color: #fff;
+    height: 100vh;
+    width: 100vw;
+}
+
+.header-and-back-button {
+    margin-top: 56px;
+}
+
+.header-box {
+    margin-top:20px;
+    display: flex;
+    align-items: center;
+    background: rgb(2,33,64);
+    background: linear-gradient(37deg, rgba(2,33,64,1) 37%, rgba(4,55,106,1) 65%);  
+    height: 200px;
+}
+
+
+.header-text-and-breadcrumbs {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10vw;
+    color: #fff !important;
+}
+
+.breadcrumb-nav {
+    background-color: transparent;
+}
+
+.breadcrumb-item.active {
+    color: #fff;
+}
+
+.fixed-alert {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+}
+
+
+.page-content {
+    margin-top: 40px;
+    margin-left:20vw;
+    margin-right:20vw;
+}
+
+.content-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.question-text {
+    height: 30vh;
+}
+
+.add-topic-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.topic-button-and-dropdown {
+    display: flex;
+    flex-direction: column;
+}
+
+.keyword-added, .province-added {
+    border-style: solid;
+    border-color: #402102;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    min-width: 100px;
+    max-height: 2rem;
+    padding-left:10px;
+    padding-right: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+
+.keyword-added:hover, .province-added:hover {
+    border-color: rgb(197, 196, 196);
+    background-color: rgb(197, 196, 196);
+    text-decoration: line-through;
+    cursor: pointer;
+}
+
+
+
+
+.add-topic-button, .add-province-button {
+    border-color: transparent;
+    border-radius: 20px;
+    background-color: #402102;
+    transition:0.2s;
+    width:160px;
+    margin-top: 10px;
+}
+
+.add-topic-button:hover, .add-province-button:hover {
+    background-color: #80471c;
+}
+
+.topic-button-text, .province-button-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.topic-button-text p, .province-button-text p {
+    margin-bottom:0.1rem;
+    margin-right:4px;
+}
+
+.topics-selects-container {
+    display: none;
+    width:250px;
+    margin-top: 4px;
+    position: relative;
+}
+
+.province-select-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.topic:hover, .province:hover {
+    background-color: #402102;
+    color: white;
+}
+
+.topic-list, .province-list {
+    list-style-type: none;
+    padding-left:0px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    height: 11rem;
+    overflow: scroll;
+}
+
+.province-list {
+    height: 9rem;
+    width: auto;
+}
+
+.topic, .province {
+    padding-top:4px;
+    padding-left: 4px;
+}
+
+.topic-search {
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index: 1000;
+}
+
+.province-select-and-button {
+    display: flex;
+}
+
+.province-search {
+    position: absolute;
+}
+
+.province-button-and-dropdown {
+    display: flex;
+    flex-direction: column;
+}
+
+.topic-search-card, .province-search-card {
+    border-radius: 0px;
+    height: 11rem;
+}
+
+.province-search-card {
+    margin-top:4px;
+    width:242px;
+    display: none;
+}
+
+.submit-button-container {
+    display: flex;
+}
+
+.submit-button {
+    border-radius: 20px;
+    border-style: none;
+    background-color: #022140;
+    color: white;
+    padding: 8px 24px 8px 24px;
+}
+
+.submit-button:hover {
+    background-color: #054381;
+}
+
+@media (max-width: 991px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .customized-card {
+       width: 80vw !important; 
+       margin-bottom: 5vh;
+    }
+
+    .header-text {
+        text-align: center;
+    }
+
+    .title-and-topics {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .tags{
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .name-and-pfp {
+        margin-left: 6px;
+    }
+
+    .name-and-cert {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pro-desc {
+        margin-left: 10px;
+    }
+    .cert {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .submit-button-container {
+        justify-content: center;
+    }
+
+    .submit-button {
+        width:100%;
+    }
+}

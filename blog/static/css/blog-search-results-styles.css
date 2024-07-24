@@ -1,0 +1,143 @@
+
+.page-content {
+    margin-top: 96px;
+}
+
+.page-title {
+    display: flex;
+    justify-content: center;
+}
+
+.search-form {
+    margin-left: auto;
+}
+
+.blog-search {
+    padding-right:40px;
+    padding-left:40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit-button {
+    width:3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px 10px 10px 0px;
+    background-color: #fff;
+    border-style: solid;
+    border-color: #022140;
+}
+
+.submit-button:hover {
+    background-color: #022140;
+    color: #fff;
+}
+
+.search-blog-button h6 {
+    margin-bottom: 0;
+}
+
+.blog-cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.blog-card {
+    margin: 30px;
+    width: 400px;
+    height:500px;
+}
+
+.blog-card img {
+    object-fit: contain;
+    border-radius: 6px 6px 0px 0px;
+}
+
+.blog-text-items {
+    margin-left:8px;
+}
+
+.blog-title {
+    padding:10px 10px 0px 10px;
+    font-weight: 300;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height:4.2rem;
+}
+
+.info-items {
+    margin-top:20px;
+}
+
+.author-info {
+    display: flex;
+    padding-left: 4px;
+}
+
+.author-info img {
+    height:3rem;
+    clip-path: circle();
+}
+
+.author-info-text {
+    display: flex;
+    flex-direction: column;
+    padding-left:8px;
+}
+
+.author-info-text * {
+    margin-top:4px;
+}
+
+.topic-and-time {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+    padding-left: 8px;
+}
+
+.min-read {
+    padding-left: 8px;
+}
+
+.blog-topic {
+    background-color: #402102;
+    color: white;
+    border-radius: 20px;
+    width:fit-content;
+}
+
+.blog-topic small {
+    margin:8px;
+}
+
+.blog-views {
+    display: flex;
+    justify-content: flex-end;
+    margin-right:20px;
+    margin-top: 20px;
+}
+
+@media (max-width: 991px) {
+
+    .blog-cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .blog-search {
+        padding-right:0px;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .blog-card {
+        margin:0px;
+    }
+}

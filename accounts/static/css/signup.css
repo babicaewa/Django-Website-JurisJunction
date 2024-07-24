@@ -1,0 +1,61 @@
+.go-back {
+    padding-top:4px;
+    padding-left:2px;
+}
+.signup-divs {
+    margin-top:10vh;
+}
+
+
+.signup-title {
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+}
+
+.form-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    margin-left:4vw;
+    margin-right:4vw;
+}
+
+.input-div {
+    margin-top:12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    padding: 5px 0;
+    background-color: whitesmoke; 
+}
+
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover {
+    border-bottom: 1px solid #aaa;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-bottom: 2px solid #007bff;
+}
+
+input::placeholder {
+    color: #999; 
+}

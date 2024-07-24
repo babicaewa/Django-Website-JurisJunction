@@ -1,0 +1,172 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/professional-search-styles.css' %}"/>
+
+<div class="container form-container">
+    <form id="searchForm" action="{% url 'search_results' %}">
+        <div class="row input-items-row shadow-lg">
+            <div class="col-md form-col">
+              <div class="specialty-container input-container">
+                <label class="form-placeholder" for="specialtyInput" id="specialtyPlaceholder">
+                  <i class="bi bi-briefcase-fill"></i>
+                  <p>Specialty</p>
+                </label>
+                {% if inputted_specialty %}
+                    <input class="specialty-input form-control" type="text" id="specialtyInput" name="specialtyInput" value="{{inputted_specialty}}" autocomplete="off">
+                {%else%}
+                    <input class="specialty-input form-control" type="text" id="specialtyInput" name="specialtyInput" autocomplete="off">
+                {%endif%}
+                <ul class="dropdown-list specialty-dropdown">
+                  {% for specialty in all_specialties %}
+                  <li class="bullet specialty-bullet">
+                    <p class="bullet-text">{{specialty}}</p>
+                  </li>
+                  {%endfor%}
+                </ul>
+              </div>
+            </div>
+            <div class="col-md form-col">
+              <label class="form-placeholder" for="autocomplete" id="locationPlaceholder">
+                <i class="bi bi-geo-alt-fill"></i>
+                <p>Location</p>
+              </label>
+              {% if inputted_location %}
+                <input type="text" class="form-control" id="autocomplete" name="autocomplete" placeholder="" aria-label="Location" aria-describedby="basic-addon1" value="{{inputted_location}}" autocomplete="off">
+              {%else%}
+                <input type="text" class="form-control" id="autocomplete" name="autocomplete" placeholder="" aria-label="Location" aria-describedby="basic-addon1" autocomplete="off">
+              {%endif%}
+            </div>
+            <div class="col-md-auto form-col search-button-container">
+              <button type="submit" class="search-button" id="searchButton" href="{% url 'search_results' %}">
+                <i class="bi bi-search"></i>
+                <p>Search</p>
+              </button>
+            </div>
+            <div class="extra-filters">
+              <div class="extra-filters-title-container">
+                <p>Advanced Filters</p>
+              </div>
+              <div class="row advanced-row">
+                <div class="col form-col">
+                  <div class="search-col-container">
+                    <div class="col-title">
+                      <p>Range</p>
+                    </div>
+                    {%if inputted_range%}
+                        <div class="slider-container">
+                        <div class="input-group radius-input">
+                            <input type="number" class="form-control" id="radiusInput" min="0" max="100" value="{{inputted_range}}" autocomplete="off">
+                            <span class="input-group-text">km</span>
+                        </div>
+                        <input type="range" class="radius-slider" id="radiusSlider" name="radius" min="0" max="100" value="{{inputted_range}}" autocomplete="off">
+                        </div>
+                    {%else%}
+                        <div class="slider-container">
+                            <div class="input-group radius-input">
+                                <input type="number" class="form-control" id="radiusInput" value="20" min="0" max="100" autocomplete="off">
+                                <span class="input-group-text">km</span>
+                            </div>
+                            <input type="range" class="radius-slider" id="radiusSlider" name="radius" min="0" max="100" value="20" autocomplete="off">
+                        </div>
+                    {%endif%}
+                  </div>
+                </div>
+                <div class="col form-col">
+                  <div class="search-col-container">
+                    <div class="language-container input-container">
+                      <label class="form-placeholder" for="languageInput" id="languagePlaceholder">
+                        <i class="bi bi-translate"></i>
+                        <p>Language</p>
+                      </label>
+                    {%if inputted_language%}
+                        <input type="text" class="language-input form-control" id="languageInput" name="language" value="{{inputted_language}}" autocomplete="off">
+                    {%else%}
+                        <input type="text" class="language-input form-control" id="languageInput" name="language" autocomplete="off">
+                    {%endif%}
+                      <ul class="dropdown-list language-dropdown" id="languageDropdown">
+                        {% for language in all_languages %}
+                        <li class="bullet language-bullet">
+                          <p class="bullet-text">{{language}}</p>
+                        </li>
+                        {%endfor%}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col form-col">
+                  <div class="search-col-container">
+                    <input type="hidden" name="avg-rating" value="0" id="ratingSelected" autocomplete="off">
+                    <div class="rating-dropdown-container" id="ratingDropdownContainer">
+                      <div class="rating-dropdown-inner-text">
+                        <div class="rating-placeholder-text" id="ratingPlaceholder">
+                          <i class="bi bi-star-fill"></i>
+                          <p>Average Rating</p>
+                        </div>
+                        <i class="bi bi-caret-down-fill"></i>
+                      </div>
+                    <div class="dropdown-list-container" id="dropdownListContainer">
+                      <ul class="rating-dropdown">
+                        <li class="avg-rating-select">
+                          <img src="{{ MEDIA_URL }}main/5stars.png" alt="5stars" class="avg-rating-select-img" id="5star">
+                          <p class="avg-rating-select-text">5 Stars & Up</p>
+                        </li>
+                        <li class="avg-rating-select">
+                          <img src="{{ MEDIA_URL }}main/4stars.png" alt="4stars" class="avg-rating-select-img" id="4star">
+                          <p class="avg-rating-select-text">4 Stars & Up</p>
+                        </li>
+                        <li class="avg-rating-select">
+                          <img src="{{ MEDIA_URL }}main/3stars.png" alt="3stars" class="avg-rating-select-img" id="3star">
+                          <p class="avg-rating-select-text">3 Stars & Up</p>
+                        </li>
+                        <li class="avg-rating-select">
+                          <img src="{{ MEDIA_URL }}main/2stars.png" alt="2stars" class="avg-rating-select-img" id="2star">
+                          <p class="avg-rating-select-text">2 Stars & Up</p>
+                        </li>
+                        <li class="avg-rating-select">
+                          <img src="{{ MEDIA_URL }}main/1stars.png" alt="1stars" class="avg-rating-select-img" id="1star">
+                          <p class="avg-rating-select-text">1 Star & Up</p>
+                        </li>
+                        <li class="avg-rating-select">
+                            <p class="avg-rating-select-text any-star-rating">Any</p>
+                          </li>
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+                <div class="col form-col bottom-row-col">
+                  <div class="search-col-container">
+                    <label class="form-placeholder" for="keywordInput" id="keywordPlaceholder">
+                      <i class="bi bi-tag-fill"></i>
+                      <p>Additional Keywords</p>
+                    </label>
+                    {%if inputted_keyword%}
+                        <input class="keyword-input form-control" type="text" id="keywordInput" name="keyword" value="{{inputted_keyword}}" autocomplete="off">
+                    {%else%}
+                        <input class="keyword-input form-control" type="text" id="keywordInput" name="keyword" autocomplete="off">
+                    {%endif%}
+                  </div>
+                </div>
+                <div class="col form-col bottom-row-col">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="freeConsult" autocomplete="off">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Free Consultation?</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="filter-container">
+          <button class="search-button filter-button" type="button">
+            <i class="bi bi-sliders"></i>
+            <p class="button-text">Advanced Filters</p>
+          </button>
+        </div>
+    </form>
+</div>
+
+<div id="minRating" data-min-rating="{{ inputted_min_rating }}"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="{% static 'js/professionalSearch.js' %}"></script>

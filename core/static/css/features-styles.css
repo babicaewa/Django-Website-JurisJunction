@@ -1,0 +1,40 @@
+.page-title {
+    margin-top: 56px;
+    text-align: center;
+}
+
+.page-text {
+    padding: 12px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.step {
+    padding: 8px;
+}
+
+.step-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+
+}
+
+  @media (max-width: 991px) {
+
+    .step-text {
+        flex-direction: column;
+    }
+
+
+}
+
